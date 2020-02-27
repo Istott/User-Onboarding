@@ -39,6 +39,19 @@ const MemberForm = ({ values, errors, touched, status }) => {
           )}
         </label>
 
+        <label htmlFor="password">
+            password
+            <Field
+                id='password'
+                type='password'
+                name='password'
+                placeholder='password'
+            />
+              {touched.password && errors.password && (
+            <p className="errors">{errors.password}</p>
+          )}
+        </label>
+
         <label htmlFor='role'>
             role
             <Field as="select" className="role-select" name="role">
@@ -72,6 +85,7 @@ const MemberForm = ({ values, errors, touched, status }) => {
           <div key={member.id}>
             <h2>Name: {member.name}</h2>
             <h4>Email: {member.email}</h4>
+            <h4>role: {member.role}</h4>
           </div>
         );
       })}
@@ -85,6 +99,7 @@ const FormikMemberForm = withFormik({
     return {
       name: props.name || "",
       email: props.email || "",
+      password: props.password || "",
       role: props.role || "",
       tos: props.tos || false,
       notes: props.notes || ""
@@ -93,7 +108,8 @@ const FormikMemberForm = withFormik({
 
   validationSchema: Yup.object().shape({
     name: Yup.string().required(),
-    email: Yup.string().required("EMAIL IS MANDATORY")
+    email: Yup.string().required("EMAIL IS MANDATORY"),
+    password: Yup.string().required("MUST HAVE STRONG PASSWORD")
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {

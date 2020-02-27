@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Choose Your Character!</h1>
+        <h1>Signup To Play!</h1>
+        <h3>Create Your Character!</h3>
         <FormikMemberForm />
       </header>
     </div>
