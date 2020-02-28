@@ -115,11 +115,11 @@ const FormikMemberForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     console.log("submitting", values);
     axios
-      .post("https://reqres.in/api/users/", values)
-      .then(res => {
-        console.log("success", res);
+      .post("https://reqres.in/api/users", values)
+      .then(response => {
+        console.log("success", response);
         // sends a status update through props in AnimalForm with value as res.data content
-        setStatus(res.data);
+        setStatus(response.data);
         //clears form inputs, from FormikBag
         resetForm();
       })
